@@ -1,6 +1,7 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-export default function Cart({cartItems, setCartItems}) {
+export default function Cart({ cartItems, setCartItems }) {
   return (
     <div className="container container-fluid">
       <h2 className="mt-5">
@@ -17,21 +18,20 @@ export default function Cart({cartItems, setCartItems}) {
                   <div className="col-4 col-lg-3">
                     <img
                       src={item.product.images[0].image}
-                      alt="Laptop"
+                      alt={item.product.name}
                       height="90"
                       width="115"
                     />
                   </div>
 
                   <div className="col-5 col-lg-3">
-                    <a href="#">
-                      OPPO F21s Pro 5G (Dawnlight Gold, 8GB RAM, 128 Storage)
-                      with No Cost EMI/Additional Exchange Offers
-                    </a>
+                    <Link to={"/product/" + item.product._id}>
+                      {item.product.name}
+                    </Link>
                   </div>
 
                   <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                    <p id="card_item_price">$245.67</p>
+                    <p id="card_item_price">${item.product.price}</p>
                   </div>
 
                   <div className="col-4 col-lg-3 mt-4 mt-lg-0">
@@ -81,5 +81,3 @@ export default function Cart({cartItems, setCartItems}) {
     </div>
   );
 }
-
-
