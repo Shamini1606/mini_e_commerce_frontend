@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { flushSync } from "react-dom";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -15,7 +14,7 @@ export default function ProductDetail({ cartItems, setCartItems }) {
   }, []);
 
   function addToCart() {
-    const itemExist = cartItems.find((Item) => Item.product._id == product._id);
+    const itemExist = cartItems.find((item) => item.product._id == product._id);
     if (!itemExist) {
       const newItem = { product, qty };
       setCartItems((state) => [...state, newItem]);
